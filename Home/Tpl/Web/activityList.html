@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>会员管理</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<body>
+<div class="row-fluid">
+<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+	<div class="portlet box yellow">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-reorder"></i>活动详情</div>
+		</div>
+		<div class="portlet-body">
+			<table class="table sliders table-striped">
+				<tbody>
+					<tr>
+						<td>活动状态</td>
+						<td>{$data.status}</td>
+					</tr>
+					<tr>
+						<td>楼盘名称</td>
+						<td>{$data.loupan}</td>
+					</tr>
+					<tr>
+						<td>标题</td>
+						<td>{$data.title}</td>
+					</tr>
+					<tr>
+						<td>简介</td>
+						<td>{$data.content}</td>
+					</tr>
+					<tr>
+						<td>开始时间</td>
+						<td>{$data.starttime}</td>
+					</tr>
+					<tr>
+						<td>结束时间</td>
+						<td>{$data.endtime}</td>
+					</tr>
+					<tr>
+						<td>排序</td>
+						<td>{$data.sort}</td>
+					</tr>
+					<tr>
+						<td>楼盘地址</td>
+						<td>{$data.address}</td>
+					</tr>
+					<tr>
+						<td>咨询电话</td>
+						<td>{$data.telephone}</td>
+					</tr>
+					<tr>
+						<td>房价</td>
+						<td>{$data.price}</td>
+					</tr>
+					<tr>
+						<td>专项折扣</td>
+						<td>{$data.discount}</td>
+					</tr>
+					<tr>
+						<td>首页图片</td>
+						<td>
+							<img src="{$data.imgurl}" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>

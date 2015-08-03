@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>系统管理</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<script src="__PUBLIC__/showdate.js" type="text/javascript"></script>
+<script src="__PUBLIC__/calendar.js" type="text/javascript" ></script>
+<script>
+function preImg(sourceId, targetId) { 
+	var url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+	var imgPre = document.getElementById(targetId); 
+	imgPre.src = url; 
+} 
+</script>
+<body>
+<div class="row-fluid">
+<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+	<div class="portlet box yellow">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-reorder"></i>修改用户</div>
+		</div>
+		<div class="portlet-body">
+			<form action="__APP__/Web/userEditSave" method="post" name="formname">
+				<table class="table sliders table-striped">
+				<tbody>
+					<tr>
+						<td>用户名</td>
+						<td><input type="text" name="account" value="{$data.account}" readOnly="readOnly" /></td>
+					</tr>
+					<tr>
+						<td>姓名</td>
+						<td><input type="text" name="nickname" value="{$data.nickname}" /></td>
+					</tr>
+					<tr>
+						<td>电话</td>
+						<td><input type="text" name="tel" value="{$data.tel}" /></td>
+					</tr>
+					<tr>
+						<td>角色</td>
+						<td>
+							<select name="role">
+									<option value={$data.role}>{$data.role}</option>
+								<volist id="role" name="role">
+									<option value="{$role.roleName}">{$role.roleName}</option>
+								</volist>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>状态</td>
+						<td>
+							<select name="status">
+								<if condition="$data[status] eq 1">
+								<option value="1">开启</option>
+								<else />
+								<option value="0">禁用</option>
+								</if>
+								<option value="1">开启</option>
+								<option value="0">禁用</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>区域</td>
+						<td>
+							<select name="city1">
+								<option>{$data.city1}</option>
+								<option>上海</option>
+							</select>
+							&nbsp;
+							<select name="city2">
+								<option>{$data.city2}</option>
+								<option>杨浦区</option>
+								<option>奉贤区</option>
+								<option>嘉定区</option>
+								<option>松江区</option>
+								<option>长宁区</option>
+								<option>崇明县</option>
+								<option>闸北区</option>
+								<option>虹口区</option>
+								<option>黄浦区</option>
+								<option>静安区</option>
+								<option>金山区</option>
+								<option>闵行区</option>
+								<option>浦东新区</option>
+								<option>普陀区</option>
+								<option>青浦区</option>
+								<option>徐汇区</option>
+								<option>宝山区</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="submit" value="保存" />
+						</td>
+					</tr>
+				</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>

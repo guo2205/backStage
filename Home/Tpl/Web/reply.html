@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>会员管理</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<body>
+<div class="row-fluid">
+<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+	<div class="portlet box yellow">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-reorder"></i>活动详情</div>
+		</div>
+		<div class="portlet-body">
+			<form action="__APP__/Web/replySave" method="post">
+			<input type="hidden" value="{$data.id}" name="id" />
+			<table class="table sliders table-striped">
+				<tr>
+					<td>用户</td>
+					<td>{$data.userid}</td>
+				</tr>
+				<tr>
+					<td>手机</td>
+					<td>{$data.iphone}</td>
+				</tr>
+				<tr>
+					<td>问题</td>
+					<td>{$data.feedback}</td>
+				</tr>
+				<tr>
+					<td>回复</td>
+					<td>
+						<textarea name="reply" style="width:400px;height:50px;"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="submit" value="回复" />
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>

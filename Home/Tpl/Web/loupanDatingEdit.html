@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>添加户型</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<body>
+<div class="row-fluid">
+	<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+		<div class="portlet box yellow tabbable">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="icon-reorder"></i>
+					<span class="hidden-480">修改楼盘</span>
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<div class="tabbable portlet-tabs">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#portlet_tab5" data-toggle="tab">楼盘大厅</a></li>
+						<li><a href="__APP__/Web/loupanHuxingEdit" data-toggle="tab">在售户型</a></li>
+						<li><a href="__APP__/Web/loupanZhoubianEdit" data-toggle="tab">周边配套</a></li>
+						<li><a href="__APP__/Web/loupanHuanjingEdit" data-toggle="tab">小区环境</a></li>
+						<li><a href="__APP__/Web/loupanMainEdit" data-toggle="tab">基本信息</a></li>
+					</ul>
+					<form action="__URL__/loupanDatingSave" method="post" name="formname" enctype="multipart/form-data">
+					<div class="tab-content">
+						<div class="tab-pane active" id="portlet_tab5">
+							<input type="hidden" name="id" value="{$data.id}" />
+							<table class="table sliders table-striped">
+								<tbody>
+									<tr>
+										<td>楼盘大厅3D</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>大厅名称</td>
+										<td><input type="text" name="dating_name" value="{$data.name}" /></td>
+									</tr>
+									<tr>
+										<td>ios模型</td>
+										<td><input type="file" multiple name="dating_ios[]" /></td>
+									</tr>
+									<tr>
+										<td>android模型</td>
+										<td><input type="file" multiple name="dating_android[]" /></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td><input type="submit" value="保存" /></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

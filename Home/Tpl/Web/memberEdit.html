@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>会员管理</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<body>
+<div class="row-fluid">
+<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+	<div class="portlet box yellow">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-cogs"></i>收藏记录</div>
+		</div>
+		<div class="portlet-body" style="height:700px;">
+			<!-- 
+			<div style="margin:10px;">
+				<input type="button" value="添加收藏" onclick="add({$userid});" />
+			</div>
+			 -->
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th></th>
+						<th>时间</th>
+						<th>楼盘名称</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				<volist name="data" id="data">
+					<tr>
+						<td></td>
+						<td>{$data.date}</td>
+						<td>{$data.collection}</td>
+						<td style="width:200px">
+							<input type="button" value="删除" onclick="collectionDel({$data.id})" />
+						</td>
+					</tr>
+				</volist>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>	
+</div>
+</body>
+<script type="text/javascript">
+function add(a)
+{
+	window.location.href='__APP__/Web/collectionAdd/account_mobile/'+a;
+}
+
+function collectionDel(a)
+{
+	if(window.confirm("请仔细核对无误，删除本数据后不能恢复。"))
+	{
+		window.location.href='__APP__/Web/collectionDel/id/'+a;
+	}
+}
+
+</script>
+</html>

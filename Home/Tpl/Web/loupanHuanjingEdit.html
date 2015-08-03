@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>楼盘添加</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<script type="text/javascript"> 
+/** 
+* 从 file 域获取 本地图片 url 
+*/ 
+function preImgArray(sourceId, targetId) {
+	var showimg2 = document.getElementById("showimg2");
+	var insertDiv = document.getElementById("insertDiv");
+	var showimgLength = showimg2.childNodes.length;
+	if(showimgLength)
+	{
+		for(i=0;i<showimgLength;i++)
+		{
+			showimg2.removeChild(showimg2.childNodes[0]);
+		}
+	}
+	var showDiv = document.getElementById(targetId);
+	var fileObj = document.getElementById(sourceId).files;
+	var count = fileObj.length;
+	var url;
+	var img;
+	for (var i=0;i<count;i++)
+	{
+		url = window.URL.createObjectURL(fileObj[i]);
+		img = document.createElement('img');
+		img.src = url;
+		img.id = 'insertDiv';
+		img.style.width = '150px';
+		img.style.height = '150px';		
+		showDiv.insertBefore(img,showDiv.lastChild);
+	}
+}
+function preImg(sourceId, targetId) { 
+	var url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+	var imgPre = document.getElementById(targetId); 
+	imgPre.src = url; 
+} 
+</script>
+<body>
+<div class="row-fluid">
+	<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+		<div class="portlet box yellow tabbable">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="icon-reorder"></i>
+					<span class="hidden-480">修改楼盘</span>
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<div class="tabbable portlet-tabs">
+					<ul class="nav nav-tabs">
+						<li><a href="__APP__/Web/loupanDatingEdit" data-toggle="tab">楼盘大厅</a></li>
+						<li><a href="__APP__/Web/loupanHuxingEdit" data-toggle="tab">在售户型</a></li>
+						<li><a href="__APP__/Web/loupanZhoubianEdit" data-toggle="tab">周边配套</a></li>
+						<li class="active"><a href="#portlet_tab2" data-toggle="tab">小区环境</a></li>
+						<li><a href="__APP__/Web/loupanMainEdit" data-toggle="tab">基本信息</a></li>
+					</ul>
+					<form action="__URL__/loupanHuanjingSave" method="post" name="formname" enctype="multipart/form-data">
+					<div class="tab-content">
+						<div class="tab-pane active" id="portlet_tab2">
+							<table class="table sliders table-striped">
+								<tbody>
+									<tr>
+										<td>小区环境</td>
+									</tr>
+									<tr>
+										<td>
+											上传效果图
+											<br />
+											<input type="file" name="huanjing[]" id="file2" multiple accept="image/gif,image.jpg,image/png" onchange="preImgArray(this.id,'showimg2');"/>
+											&nbsp;&nbsp;
+											<input type="submit" value="保存" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div id="showimg2">
+												<volist id="data" name="data" >
+													<img src="__PUBLIC__/work/android/envcof/{$data.value}" />
+												</volist>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

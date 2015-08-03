@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>活动管理</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<body>
+<div class="row-fluid">
+<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+	<div class="portlet box yellow" >
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-cogs"></i>活动分类</div>
+		</div>
+		<div class="portlet-body" style="height:700px;">
+			<form action="" method="post">
+				<div style="margin:10px;">
+					<input type="button" onclick="addActivityType();" value="添加"  style="float:left;"/>
+					<div style="clear:both;"></div>
+				</div>
+			</form>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th></th>
+						<th>类型ID</th>
+						<th>类型</th>
+						<th>描述</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				<volist id="data" name="data">
+				<tr>
+					<td></td>
+					<td>{$data.id}</td>
+					<td>{$data.value}</td>
+					<td>{$data.description}</td>
+					<td>
+						<input type="button" onclick="activityTypeDel({$data.id})" value="删除"/>
+					</td>
+				</tr>
+				</volist>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+function activityTypeDel(a)
+{
+	window.location.href='__APP__/Web/privacyTypeDel/id/'+a;
+}
+function addActivityType()
+{
+	window.location.href='__APP__/Web/addActivityType';
+}
+</script>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>资讯查看</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<body>
+<div class="row-fluid">
+<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+	<div class="portlet box yellow">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-reorder"></i>资讯查看</div>
+		</div>
+		<div class="portlet-body">
+			<table class="table sliders table-striped">
+				<tbody>
+					<tr>
+						<td>标题</td>
+						<td>{$data.title}</td>
+					</tr>
+					<tr>
+						<td>图片</td>
+						<td><img src="__PUBLIC__/newsPic/{$data.picPath}" /></td>
+					</tr>
+					<tr>
+						<td>出处</td>
+						<td>{$data.comeFrom}</td>
+					</tr>
+					<tr>
+						<td>资讯类型</td>
+						<td>{$data.type}</td>
+					</tr>
+					<tr>
+						<td>作 者</td>
+						<td>{$data.author}</td>
+					</tr>
+					<tr>
+						<td>日 期</td>
+						<td>{$data.time}</td>
+					</tr>
+					<tr>
+						<td>关键字</td>
+						<td>
+							{$data.keyword1} | {$data.keyword2} | {$data.keyword3}
+						</td>
+					</tr>
+					<tr>
+						<td>详 情</td>
+						<td>{$data.details}</td>
+					</tr>
+					<tr>
+						<td>点击率</td>
+						<td>{$data.clickRate}</td>
+					</tr>
+					<tr>
+						<td>是否显示</td>
+						<td>{$data.display}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>

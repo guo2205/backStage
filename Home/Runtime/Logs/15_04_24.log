@@ -1,0 +1,17 @@
+[ 2015-04-24T15:03:19+08:00 ] 140.206.138.138 /HY/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000418s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000502s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.000611s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004462s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.005087s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.005289s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.005489s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.005624s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000800s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.005929s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000382s ]
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>添加户型</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<body>
+<div class="row-fluid">
+<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+	<div class="portlet box yellow">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-cogs"></i>编辑户型</div>
+		</div>
+		<div class="portlet-body" style="height:700px;">
+			<form action="__APP__/Web/huxingSave" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="id" value="{$data.id}" />
+				<table class="table sliders table-striped">
+					<tbody>
+						<tr>
+							<td>在售户型</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>户型</td>
+							<td><input type="text" name="name" value="{$data.name}"/></td>
+						</tr>
+						<tr>
+							<td>户型描述</td>
+							<td><textarea name="size" style="width:400px;height:45px">{$data.size}</textarea></td>
+						</tr>
+						<tr>
+							<td>pic</td>
+							<td><input type="text" name="pic" value="{$data.pic}"/></td>
+						</tr>
+						<tr>
+							<td>rot</td>
+							<td><input type="text" name="rot" value="{$data.rot}" /></td>
+						</tr>
+						<tr>
+							<td>pos</td>
+							<td><input type="text" name="pos" value="{$data.pos}" /></td>
+						</tr>
+						<!-- 
+						<tr>
+							<td>ios模型</td>
+							<td><input type="file" name="huxing_ios[]" multiple /></td>
+						</tr>
+						<tr>
+							<td>android模型</td>
+							<td><input type="file" name="huxing_android[]" multiple /></td>
+						</tr>
+						 -->
+						<tr>
+							<td><input type="submit" value="保存" /></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>

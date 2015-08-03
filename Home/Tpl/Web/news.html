@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>资讯管理</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<body>
+<div class="row-fluid">
+<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+	<div class="portlet box yellow" >
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-cogs"></i>资讯管理</div>
+		</div>
+		<div class="portlet-body" style="height:700px;">
+			<form action="__APP__/Web/news" method="post">
+				<div style="margin:10px;">
+					<input type="button" onclick="lick();" value="添加资讯" />
+					&nbsp;
+					<select name="searchType" style="width:100px;margin:0px;">
+						<option value="1">资讯编号</option>
+						<option value="2"
+							<if condition="$data2[type] neq ''">selected="selected"</if>
+						>资讯类型</option>
+					</select>
+					:
+					<input type="text" value="{$data2.id}{$data2.type}" name="text" style="margin:0px;"/>
+					<input type="submit" value="搜索" style="margin:0px;"/>
+					<input type="button" id="clear" value="清除" style="margin:0px;"/>
+				</div>
+			</form>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th></th>
+						<th>编号</th>
+						<th>标题</th>
+						<th>类型</th>
+						<th>出处</th>
+						<th>作者</th>
+						<th>日期</th>
+						<th>是否显示</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				<volist name="data" id="data">
+					<tr>
+						<td></td>
+						<td>{$data.id}</td>
+						<td>{$data.title}</td>
+						<td>{$data.type}</td>
+						<td>{$data.comeFrom}</td>
+						<td>{$data.author}</td>
+						<td>{$data.time}</td>
+						<td>{$data.display}</td>
+						<td>
+							<input type="button" onclick="lick2({$data.id});" value="查看"  style="margin-right:5px;" />
+							<input type="button" onclick="newsEdit({$data.id});" value="修改"  style="margin-right:5px;" />
+							<input type="button" onclick="newsDel({$data.id});" value="删除" />
+					</tr>
+				</volist>
+				</tbody>
+			</table>
+			<div style="margin:auto;margin-bottom:8px;">
+					共{$count}条记录
+			</div>
+			<if condition="$count elt 10">
+			<div class="pagination" style="margin:auto;display:none;">
+			<else />
+			<div class="pagination" style="margin:auto;">
+			</if>
+				<ul>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>	
+</div>
+</body>
+<script src="__PUBLIC__/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
+<script src="__PUBLIC__/media/js/bootstrap.min.js" type="text/javascript"></script>
+<!--[if lt IE 9]>
+<script src="__PUBLIC__/media/js/excanvas.min.js"></script>
+<script src="__PUBLIC__/media/js/respond.min.js"></script>  
+<![endif]-->   
+<script src="__PUBLIC__/media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/media/js/jquery.blockui.min.js" type="text/javascript"></script>  
+<script src="__PUBLIC__/media/js/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="__PUBLIC__/media/js/app.js"></script>
+<script type="text/javascript">
+function lick()
+{
+	window.location.href='__APP__/Web/addNews';
+}
+function lick2(a)
+{
+	window.location.href='__APP__/Web/newsList/id/'+a;
+}
+function newsEdit(a)
+{
+	window.location.href='__APP__/Web/newsEdit/id/'+a;
+}
+function newsDel(a)
+{
+	if(window.confirm("请仔细核对无误，删除本数据后不能恢复。"))
+	{
+		window.location.href='__APP__/Web/newsDel/id/'+a;
+	}
+}
+$(function(){ 
+	$("#clear").click(function(){ 
+		$.post("__APP__/Web/clear",{news:1});
+		document.getElementsByName("text")[0].value="";
+	}); 
+}); 
+</script>
+</html>

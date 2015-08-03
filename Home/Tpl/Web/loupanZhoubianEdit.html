@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>楼盘添加</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<script type="text/javascript">
+function preImg(sourceId, targetId) { 
+	var url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+	var imgPre = document.getElementById(targetId); 
+	imgPre.src = url; 
+} 
+</script>
+<body>
+<div class="row-fluid">
+	<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+		<div class="portlet box yellow tabbable">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="icon-reorder"></i>
+					<span class="hidden-480">修改楼盘</span>
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<div class="tabbable portlet-tabs">
+					<ul class="nav nav-tabs">
+						<li><a href="__APP__/Web/loupanDatingEdit" data-toggle="tab">楼盘大厅</a></li>
+						<li><a href="__APP__/Web/loupanHuxingEdit" data-toggle="tab">在售户型</a></li>
+						<li class="active"><a href="#portlet_tab3" data-toggle="tab">周边配套</a></li>
+						<li><a href="__APP__/Web/loupanHuanjingEdit" data-toggle="tab">小区环境</a></li>
+						<li><a href="__APP__/Web/loupanMainEdit" data-toggle="tab">基本信息</a></li>
+					</ul>
+					<form action="__URL__/loupanZhoubianSave" method="post" name="formname" enctype="multipart/form-data">
+					<div class="tab-content">
+						<div class="tab-pane active" id="portlet_tab3">
+							<table class="table sliders table-striped">
+								<tbody>
+									<tr><td>周边配套</td></tr>
+									<tr><td>上传配套图&nbsp;&nbsp;<input type="file" name="zhoubian" id="zhoubian" onchange="preImg(this.id,'showimg3');" /></td></tr>
+									<tr><td><img id="showimg3" name="showimg3" src="Public/work/android/envcof/{$data.value}" style="width:150px;height:120px;" /></td></tr>
+									<tr><td><input type="submit" value="保存" /></td></tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>操作日志</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<body>
+<div class="row-fluid">
+<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+	<div class="portlet box yellow">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-cogs"></i>操作日志</div>
+		</div>
+		<div class="portlet-body" style="height:700px;">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th></th>
+						<th>编号</th>
+						<th>用户名</th>
+						<th>IP地址</th>
+						<th>操作内容</th>
+						<th>客户端标示</th>
+						<th>操作时间</th>
+						<th>编辑</th>
+					</tr>
+				</thead>
+				<tbody>
+				<volist name="data" id="data">
+					<tr>
+						<td></td>
+						<td>{$data.id}</td>
+						<td>{$data.account}</td>
+						<td>{$data.ip}</td>
+						<td>登录</td>
+						<td>{$data.os}</td>
+						<td>{$data.time}</td>
+						<td><input type="button" onclick="logDel({$data.id});" value="删除"/></td>
+					</tr>
+				</volist>
+				</tbody>
+			</table>
+			<div style="margin:auto;margin-bottom:8px;">
+					共{$count}条记录
+			</div>
+			<if condition="$count elt 10">
+			<div class="pagination" style="margin:auto;display:none;">
+			<else />
+			<div class="pagination" style="margin:auto;">
+			</if>
+				<ul>
+					<li><a href="__APP__/Web/operationLog/pageno/{$ksPageno.0}/">«</a></li>
+					<foreach name="pageno" item="vo">
+					<if condition="$vo eq $thisPageno">
+						<li><a href="__APP__/Web/operationLog/pageno/{$vo}/"><font color="red">{$vo}</font></a></li>
+					<else />
+						<li><a href="__APP__/Web/operationLog/pageno/{$vo}/">{$vo}</a></li>
+					</if>
+					</foreach>
+					<li><a href="__APP__/Web/operationLog/pageno/{$ksPageno.1}/">»</a></li>	
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>	
+</div>
+</body>
+<script type="text/javascript">
+function add()
+{
+	window.location.href='__APP__/Web/addActivity/';
+}
+function activityList(a)
+{
+	window.location.href='__APP__/Web/activityList/id/'+a;
+}
+function activityEdit(a)
+{
+	window.location.href='__APP__/Web/activityEdit/id/'+a;
+}
+function logDel(a)
+{	
+	if(window.confirm("请仔细核对无误，删除本数据后不能恢复。"))
+	{
+		window.location.href='__APP__/Web/logDel/id/'+a;
+	}
+}
+</script>
+</html>

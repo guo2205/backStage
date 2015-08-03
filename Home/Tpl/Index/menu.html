@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8" />
+<title>菜单</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+</head>
+
+<body class="page-header-fixed">
+	<div class="page-container row-fluid">
+		<div class="page-sidebar nav-collapse collapse" style="margin-top:10px;">
+			<ul class="page-sidebar-menu">
+			<foreach name="data" item="vo">
+			<li>
+			<foreach name="vo" item="vo2" key="key">
+				<if condition="$key eq 0 ">
+					<a href='__APP__/Web/{$vo2.1}' target='right'>
+						<i class="icon-home"></i>
+						<span class="title">{$vo2.0}</span>
+					</a>
+				<else />
+					<ul class="sub-menu" style="display:block;">
+						<li>
+							<a href='__APP__/Web/{$vo2.1}' target='right'>
+								{$vo2.0}
+							</a>
+						</li>
+					</ul>
+				</if>
+			</foreach>
+			</li>
+			</foreach>
+			</ul>
+		</div>
+	</div>
+<script src="__PUBLIC__/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script type="application/javascript">
+$(function () {
+	jQuery('.page-sidebar').on('click', 'li > a', function (e) {					
+		 var menuContainer = jQuery('.page-sidebar ul');
+		 menuContainer.children('li.active').removeClass('active');
+        menuContainer.children('li > a > span').removeClass('open');
+		$(this).parents().addClass('active');
+	});
+	jQuery('.page-sidebar').on('click', 'sub-menu > li > a', function (e) {					
+		
+		$(this).parents('li').each(function () {
+			$(this).removeClass('active');
+		});
+		$(this).addClass('active');
+	});
+	
+});
+</script>
+</body>
+
+</html>

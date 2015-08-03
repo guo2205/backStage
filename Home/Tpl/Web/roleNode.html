@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>角色分组</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<body>
+<div class="row-fluid">
+	<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+		<div class="portlet box yellow tabbable">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="icon-reorder"></i>
+					<span class="hidden-480">权限管理</span>
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<div class="tabbable portlet-tabs">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#portlet_tab3" data-toggle="tab">角色权限</a></li>
+						<li><a href="__APP__/Web/roleUser"  data-toggle="tab">角色用户</a></li>
+						<li><a href="__APP__/Web/roleGroup"  data-toggle="tab">角色分组</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="portlet_tab3">
+							<table class="table table-hover">
+								<thead>
+								<tr>
+									<th></th>
+									<th>编号</th>
+									<th>用户组</th>
+									<th>会员管理</th>
+									<th>楼盘管理</th>
+									<th>活动管理</th>
+									<th>资讯管理</th>
+									<th>消息管理</th>
+									<th>操作</th>
+								</tr>
+								</thead>
+								<tbody>
+								<volist id="data" name="data">
+								<tr>
+									<td></td>
+									<td>{$data.id}</td>
+									<td>{$data.roleName}</td>
+									<td>{$data.member}</td>
+									<td>{$data.realEstate}</td>
+									<td>{$data.activity}</td>
+									<td>{$data.news}</td>
+									<td>{$data.message}</td>
+									<td>
+										<input type="button" value="管理" onclick="nodeEdit({$data.id})" />
+									</td>
+								</tr>
+								</volist>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script>
+function nodeEdit(a)
+{
+	window.location.href='__APP__/Web/nodeEdit/id/'+a;
+}
+</script>
+</html>

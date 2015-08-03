@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>活动修改</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<body>
+<div class="row-fluid">
+<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+	<div class="portlet box yellow">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-reorder"></i>消息修改</div>
+		</div>
+		<div class="portlet-body">
+		<form action="__APP__/Web/messageEditSave" method="post" name="formname">
+			<input type="hidden" name="id" value="{$data.id}" />
+			<table class="table sliders table-striped">
+				<tbody>
+					<tr>
+						<td>消息内容:</td>
+						<td><textarea name="content" style="width:400px;height:45px">{$data.content}</textarea></td>
+					</tr>
+					<tr>
+						<td>类型:</td>
+						<td>
+							<select name="type">
+								<if condition="$data.type eq 0">
+								<option value="0">系统消息</option>
+								<option value="1">推送</option>
+								<else />
+								<option value="1">推送</option>
+								<option value="0">系统消息</option>
+								</if>				
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>接收人:</td>
+						<td><input type="text" name="member" value="{$data.member}" /></td>
+					</tr>
+					<tr>
+						<td>审核状态:</td>
+						<td>
+							<select name="sh">
+								<if condition="$data.sh eq 0 ">
+								<option value="0">未审核</option>
+								<option value="1">已审核</option>
+								<else />
+								<option value="1">已审核</option>
+								<option value="0">未审核</option>
+								</if>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="保存" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>添加资讯</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<script src="__PUBLIC__/showdate.js" type="text/javascript"></script>
+<script src="__PUBLIC__/calendar.js" type="text/javascript" ></script>
+<script>
+function preImg(sourceId, targetId) { 
+	var url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+	var imgPre = document.getElementById(targetId); 
+	imgPre.src = url; 
+} 
+</script>
+<body>
+<div class="row-fluid">
+<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+	<div class="portlet box yellow">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-reorder"></i>添加资讯</div>
+		</div>
+		<div class="portlet-body">
+		<form action="__APP__/Web/addNewsFunction" method="post" name="formname" enctype="multipart/form-data">
+			<table class="table sliders table-striped">
+				<tbody>
+					<tr>
+						<td>标题</td>
+						<td><input type="text"  name="title" /></td>
+					</tr>
+					<tr>
+						<td>图片</td>
+						<td>
+							<input type="file" name="picPath" id="imgOne" accept="image/gif,image.jpg,image/png" onchange="preImg(this.id,'showimg');"/>
+							<img id="showimg" name="showimg" src="__PUBLIC__/img/sl.png" style="width:86px;height:72px;" />
+						</td>
+					</tr>
+					<tr>
+						<td>出处</td>
+						<td><input type="text" name="comeFrom" /></td>
+					</tr>
+					<tr>
+						<td>资讯类型</td>
+						<td>
+							<select name="type">
+								<volist id="type" name="type">
+									<option value="{$type.value}">{$type.value}</option>
+								</volist>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>作 者</td>
+						<td><input type="text" name="author"></td>
+					</tr>
+					<tr>
+						<td>日 期</td>
+						<td><input type="text" name="time" id="dateFrom" onclick="HS_setDate(this);" readOnly="readOnly" /></td>
+					</tr>
+					<tr>
+						<td>关键字</td>
+						<td>
+							<input type="text" name="keyword1" style="width:55px;"/>
+							<input type="text" name="keyword2" style="width:55px;"/>
+							<input type="text" name="keyword3" style="width:55px;"/>
+						</td>
+					</tr>
+					<tr>
+						<td>详 情</td>
+						<td><textarea name="details" style="width:400px;height:45px"></textarea></td>
+					</tr>
+					<tr>
+						<td>点击率</td>
+						<td><input type="text" name="clickRate" /></td>
+					</tr>
+					<tr>
+						<td>是否显示</td>
+						<td>
+							<select name="display">
+								<option value="1">显示</option>
+								<option value="0">不显示</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="保存" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>

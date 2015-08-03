@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>消息推送</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<script src="__PUBLIC__/showdate.js" type="text/javascript"></script>
+<script src="__PUBLIC__/calendar.js" type="text/javascript" ></script>
+<body>
+<div class="row-fluid">
+<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+	<div class="portlet box yellow" >
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-cogs"></i>消息推送</div>
+		</div>
+		<div class="portlet-body" style="height:700px;">
+			<form action="" method="post">
+				<div style="margin:10px;">
+					发布日期:
+					<input type="text" name="time" value="{$data2.time}" id="dateFrom" onclick="HS_setDate(this);" readOnly="readOnly" style="width:100px;margin:0px;"/>
+					&nbsp;
+					<select name="searchType" style="width:100px;margin:0px;">
+						<option value="1">消息编号</option>
+					</select>
+					:
+					<input type="text" name="text" value="{$data2.id}" style="margin:0px;" />
+					<input type="submit" value="搜索" style="margin:0px; "/>
+					<input type="button" value="清除" id="clear" onclick="Clear();" style="margin:0px;" />
+				</div>
+				<div style="margin:10px;">
+					<input type="button"onclick="lick();" value="添加消息" />
+					<input type="button"onclick="toExamine(1);" value="审核" />
+					<input type="button"onclick="toExamine(2);" value="驳回" />
+				</div>
+			</form>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th><input type="checkbox" name="boxF" onclick="checkAll();"/></th>
+						<th>编号</th>
+						<th>类型</th>
+						<th>接收人</th>
+						<th>消息内容</th>
+						<th>日期</th>
+						<th>状态</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				<volist name="data" id="data">
+					<tr>
+						<td><input type="checkbox" name="box" value="{$data.id}"></td>
+						<td>{$data.id}</td>
+						<td>{$data.type}</td>
+						<td>{$data.member}</td>
+						<td>{$data.content}</td>						
+						<td>{$data.time}</td>
+						<td>{$data.sh}</td>
+						<td>
+							<input type="button" value="查看" onclick="lick2({$data.id});" />
+							<input type="button" value="修改" onclick="lick3({$data.id});" />
+							<input type="button" value="删除" onclick="messageDel({$data.id});" />
+						</td>
+					</tr>
+				</volist>
+				</tbody>
+			</table>
+			<div style="margin:auto;margin-bottom:8px;">
+					共{$count}条记录
+			</div>
+			<if condition="$count elt 10">
+			<div class="pagination" style="margin:auto;display:none;">
+			<else />
+			<div class="pagination" style="margin:auto;">
+			</if>
+				<ul>
+					<li><a href="__APP__/Web/message/pageno/{$ksPageno.0}/">«</a></li>
+					<foreach name="pageno" item="vo">
+					<if condition="$vo eq $thisPageno">
+						<li><a href="__APP__/Web/message/pageno/{$vo}/"><font color="red">{$vo}</font></a></li>
+					<else />
+						<li><a href="__APP__/Web/message/pageno/{$vo}/">{$vo}</a></li>
+					</if>
+					</foreach>
+					<li><a href="__APP__/Web/message/pageno/{$ksPageno.1}/">»</a></li>	
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+<script src="__PUBLIC__/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
+<script src="__PUBLIC__/media/js/bootstrap.min.js" type="text/javascript"></script>
+<!--[if lt IE 9]>
+<script src="__PUBLIC__/media/js/excanvas.min.js"></script>
+<script src="__PUBLIC__/media/js/respond.min.js"></script>  
+<![endif]-->   
+<script src="__PUBLIC__/media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/media/js/jquery.blockui.min.js" type="text/javascript"></script>  
+<script src="__PUBLIC__/media/js/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="__PUBLIC__/media/js/app.js"></script>     
+<script type="text/javascript">
+function lick()
+{
+	window.location.href='/HY/index.php?s=/Web/addMessage';
+}
+function lick2(a)
+{
+	window.location.href='/HY/index.php?s=/Web/messageList/id/'+a;
+}
+function lick3(a)
+{
+	window.location.href='/HY/index.php?s=/Web/messageEdit/id/'+a;
+}
+function messageDel(a)
+{
+	if(window.confirm("请仔细核对无误，删除本数据后不能恢复。"))
+	{
+		window.location.href='/HY/index.php?s=/Web/messageDel/id/'+a;
+	}
+}
+function toExamine(a)
+{
+	var str=document.getElementsByName("box");
+	var objarray=str.length;
+	var chestr="";
+	for (i=0;i<objarray;i++)
+	{
+		if(str[i].checked == true)
+		{
+			chestr+=str[i].value+",";
+		}
+	}
+	if(chestr)
+	{
+		window.location.href='__APP__/Web/messageToExamine/type/'+a+'/id/'+chestr;
+	}
+	else
+	{
+		return;
+	}
+}
+function checkAll()
+{
+	var str=document.getElementsByName("boxF");
+	var str2=document.getElementsByName("box");
+	var objarray=str2.length;
+	if(str[0].checked)
+	{
+		for (i=0;i<objarray;i++)
+		{
+			str2[i].checked = true;
+ 		}
+	}
+	else
+	{
+		for (i=0;i<objarray;i++)
+		{
+			str2[i].checked = false;
+ 		}
+	}
+	
+}
+function Clear()
+{
+	document.getElementsByName("text")[0].value="";
+	document.getElementsByName("time")[0].value="";
+}
+$(function(){ 
+	$("#clear").click(function(){ 
+		$.post("__APP__/Web/clear",{message:1});
+	}); 
+}); 
+
+</script>
+</html>

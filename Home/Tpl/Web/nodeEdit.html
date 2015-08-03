@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<title>会员管理</title>
+	<link href="__PUBLIC__/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="__PUBLIC__/media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="__PUBLIC__/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="__PUBLIC__/media/image/favicon.ico" />
+</head>
+<body>
+<div class="row-fluid">
+<div class="span12" style="margin-top:12px;margin-left:0px;text-align:center;">
+	<div class="portlet box yellow">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-cogs"></i>分配权限:{$data.roleName}</div>
+		</div>
+		<div class="portlet-body" style="height:700px;">
+			<form method="post" action="__APP__/Web/roleNodeSave" name="formname">
+				<input type="hidden" name="id" value="{$data.id}"/>
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>模块</th>
+						<th>增</th>
+						<th>删</th>
+						<th>改</th>
+						<th>查</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="for1" item="vo" key="key">
+					<tr>
+						<td>{$vo}</td>
+						<foreach name="for2" item="vo2" key="key2">
+						<td>	
+							<input type="checkbox" name="{$key}_{$vo2}" <if condition="$data[$key.'_'.$vo2] eq 1">checked="checked"</if> />
+						</td>
+						</foreach>
+					</tr>
+					</foreach>	
+				</tbody>
+				</table>
+				<br />
+				<br />
+				<input type="submit" value="保存" />
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</body>
+</html>
